@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ProductService/ProductService/ProductService.iml" filepath="$PROJECT_DIR$/ProductService/ProductService/ProductService.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/dailycodebuffer.iml" filepath="$PROJECT_DIR$/.idea/dailycodebuffer.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-boot-demo/spring-boot-demo/spring-boot-demo.iml" filepath="$PROJECT_DIR$/spring-boot-demo/spring-boot-demo/spring-boot-demo.iml" />
     </modules>
