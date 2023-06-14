@@ -32,7 +32,7 @@ public class ProductController {
     }
 
 
-    @PutMapping("/reduceQuantiry/{id}")
+    @PutMapping("/reduceQuantity/{id}")
     public ResponseEntity<Void> reduceQuantity(
             @PathVariable("id") long productId,
             @RequestParam("quantity") int quantity){
