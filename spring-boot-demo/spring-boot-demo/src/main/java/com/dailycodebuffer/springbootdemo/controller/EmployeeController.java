@@ -3,6 +3,7 @@ package com.dailycodebuffer.springbootdemo.controller;
 import com.dailycodebuffer.springbootdemo.model.Employee;
 import com.dailycodebuffer.springbootdemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
+    @Qualifier("employeeServiceImpl")
     private EmployeeService employeeService;
 
     @PostMapping
