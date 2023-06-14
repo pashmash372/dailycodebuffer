@@ -1,10 +1,7 @@
 package com.dailycodebuffer.springbootdemo.controller;
 
 import com.dailycodebuffer.springbootdemo.model.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController // @Controller + @ResponseBody
 public class HomeController {
@@ -23,5 +20,11 @@ public class HomeController {
         user.setName("John");
         user.setEmailId("john@gmail.com");
         return  user;
+    }
+
+    @GetMapping("/{id}/{id2}")
+    public String pathVariable(@PathVariable("id") String id
+            ,@PathVariable("id2") String id2){
+        return "PathVariable is : " + id +":"+id2;
     }
 }
