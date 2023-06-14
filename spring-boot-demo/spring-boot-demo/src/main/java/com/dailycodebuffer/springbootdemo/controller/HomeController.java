@@ -27,4 +27,11 @@ public class HomeController {
             ,@PathVariable("id2") String id2){
         return "PathVariable is : " + id +":"+id2;
     }
+
+    @GetMapping("/requestParam")
+    public String requestParam(@RequestParam("name") String name,
+                               @RequestParam(name ="emailId",
+                               required = false,defaultValue = "") String emailId){
+        return "RequestParam is : " + name +":"+emailId;
+    }
 }
