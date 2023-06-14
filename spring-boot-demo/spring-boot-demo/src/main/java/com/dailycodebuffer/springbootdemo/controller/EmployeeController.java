@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employees") // http://localhost:8081/employees
+@RequestMapping("/v1/employees") // http://localhost:8081/employees
 public class EmployeeController {
 
     @Autowired
@@ -35,4 +35,5 @@ public class EmployeeController {
     public String deleteEmployeeById(@PathVariable("id") String id) {
     	return employeeService.deleteEmployeeById(id);
     }
+
 }
