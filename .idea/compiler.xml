@@ -7,15 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="server-registry" />
         <module name="spring-boot-demo" />
+        <module name="ProductService" />
+        <module name="server-registry" />
         <module name="ConfigServer" />
         <module name="OrderService" />
-        <module name="ProductService" />
         <module name="PaymentService" />
+        <module name="CloudGateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="CloudGateway" target="11" />
       <module name="ConfigServer" target="11" />
       <module name="OrderService" target="11" />
       <module name="PaymentService" target="11" />
@@ -26,6 +28,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="CloudGateway" options="-parameters" />
       <module name="ConfigServer" options="-parameters" />
       <module name="OrderService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
