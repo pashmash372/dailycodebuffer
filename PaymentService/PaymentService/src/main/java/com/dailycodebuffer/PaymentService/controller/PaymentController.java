@@ -21,7 +21,8 @@ public class PaymentController {
     public ResponseEntity<Long>doPayment(
             @RequestBody PaymentRequest paymentRequest
     ){
-        return new ResponseEntity<>(paymentService.doPayment(paymentRequest),
+        return new ResponseEntity<>(
+                paymentService.doPayment(paymentRequest),
                 HttpStatus.OK);
     }
 }
