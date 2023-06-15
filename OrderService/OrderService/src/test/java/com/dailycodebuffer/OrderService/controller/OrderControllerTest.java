@@ -165,6 +165,7 @@ public class OrderControllerTest {
 
     }
 
+//    TODO : HOMEWORK : Test case failing
     /*@Test
     public void test_WhenPlaceOrderWithWrongAccess_thenThrow403() throws Exception {
         OrderRequest orderRequest = getMockOrderRequest();
@@ -177,7 +178,8 @@ public class OrderControllerTest {
                 .andReturn();
     }*/
 
-    /*@Test
+//    TODO : HOMEWORK : Test case failing
+   /* @Test
     public void test_WhenGetOrder_Success() throws Exception {
         MvcResult mvcResult
                 = mockMvc.perform(MockMvcRequestBuilders.get("/order/1")
@@ -227,4 +229,14 @@ public class OrderControllerTest {
         return objectMapper.writeValueAsString(orderResponse);
     }*/
 
+
+    @Test
+    public void testWhen_GetOrder_Order_Not_Found() throws Exception {
+        MvcResult mvcResult
+                = mockMvc.perform(MockMvcRequestBuilders.get("/order/2")
+                        .with(jwt().authorities(new SimpleGrantedAuthority("Admin")))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andReturn();
+    }
 }
