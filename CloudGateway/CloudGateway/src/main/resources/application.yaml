@@ -48,3 +48,11 @@ spring:
               args:
                 redis-rate-limiter.replenishRate: 1
                 redis-rate-limiter.burstCapacity: 1
+
+okta:
+  oauth2:
+    issuer: https://dev-02317083.okta.com/oauth2/default
+    audience: api://default
+    client-id: 0oa9z4fonlQVeUdRs5d7
+    client-secret: 8v98Ys3euycXfCcd3ANIYcb_cpm8IePMDkhPV_vx
+    scopes: openid, email, profile, offline_access
