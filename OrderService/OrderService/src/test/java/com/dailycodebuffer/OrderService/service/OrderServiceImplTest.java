@@ -1,6 +1,7 @@
 package com.dailycodebuffer.OrderService.service;
 
 import com.dailycodebuffer.OrderService.entity.Order;
+import com.dailycodebuffer.OrderService.exception.CustomException;
 import com.dailycodebuffer.OrderService.external.client.PaymentService;
 import com.dailycodebuffer.OrderService.external.client.ProductService;
 import com.dailycodebuffer.OrderService.external.response.PaymentResponse;
@@ -78,6 +79,22 @@ public class OrderServiceImplTest {
 
     }
 
+    @DisplayName("Get Orders - Failure Scenario")
+    @Test
+    void test_When_Get_Order_NOT_FOUND_then_Not_Found() {
+
+        when(orderRepository.findById(anyLong()))
+                .thenReturn(Optional.ofNullable(null));
+
+        CustomException exception =
+                assertThrows(CustomException.class,
+                        () -> orderService.getOrderDetails(1));
+        assertEquals("NOT_FOUND", exception.getErrorCode());
+        assertEquals(404, exception.getStatus());
+
+        verify(orderRepository, times(1))
+                .findById(anyLong());
+    }
 
     private Order getMockOrder() {
         return Order.builder()
