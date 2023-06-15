@@ -163,5 +163,17 @@ public class OrderControllerTest {
 
     }
 
+    /*@Test
+    public void test_WhenPlaceOrderWithWrongAccess_thenThrow403() throws Exception {
+        OrderRequest orderRequest = getMockOrderRequest();
+        MvcResult mvcResult
+                = mockMvc.perform(MockMvcRequestBuilders.post("/order/placeOrder")
+                        .with(jwt().authorities(new SimpleGrantedAuthority("Admin1")))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content(objectMapper.writeValueAsString(orderRequest))
+                ).andExpect(MockMvcResultMatchers.status().isForbidden())
+                .andReturn();
+    }*/
+
 
 }
