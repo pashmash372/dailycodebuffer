@@ -8,9 +8,11 @@ import com.dailycodebuffer.OrderService.external.request.PaymentRequest;
 import com.dailycodebuffer.OrderService.model.OrderRequest;
 import com.dailycodebuffer.OrderService.model.OrderResponse;
 import com.dailycodebuffer.OrderService.repository.OrderRepository;
+import com.dailycodebuffer.ProductService.model.ProductResponse;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
 
@@ -25,6 +27,9 @@ public class OrderServiceImpl implements  OrderService{
 
     @Autowired
     private PaymentService paymentService;
+
+    @Autowired
+    private RestTemplate restTemplate;
     @Override
     public long placeOrder(OrderRequest orderRequest) {
 
@@ -87,12 +92,26 @@ public class OrderServiceImpl implements  OrderService{
                         "NOT_FOUND",
                         404
                 ));
+
+        log.info("Invoking Product service to fetch the product for id: {}", order.getId());
+
+         ProductResponse productResponse = restTemplate
+                .getForObject("http://PRODUCT-SERVICE/product/"+order.getProductId(),
+                        ProductResponse.class
+                );
+
+         OrderResponse.ProductDetails productDetails = OrderResponse.ProductDetails.builder()
+                 .productId(productResponse.getProductId())
+                 .productName(productResponse.getProductName())
+                 .build();
+
         OrderResponse orderResponse
                 = OrderResponse.builder()
                 .orderId(order.getId())
                 .orderStatus(order.getOrderStatus())
                 .amount(order.getAmount())
                 .orderDate(order.getOrderDate())
+                .productDetails(productDetails)
                 .build();
 
         return orderResponse;
